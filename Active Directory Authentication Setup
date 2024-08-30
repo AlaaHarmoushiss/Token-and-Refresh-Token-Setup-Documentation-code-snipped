@@ -1,0 +1,14 @@
+const ActiveDirectory = require('activedirectory');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const AD_CONFIG = {
+  url: 'ldap://your-ldap-url',
+  baseDN: 'dc=yourdomain,dc=com',
+  username: 'your-username',
+  password: 'your-password'
+};
+
+const ad = new ActiveDirectory(AD_CONFIG);
+const SECRET_KEY = process.env.SECRET_KEY;
+const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY;
