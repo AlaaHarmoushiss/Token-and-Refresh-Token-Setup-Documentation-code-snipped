@@ -1,0 +1,10 @@
+const token = localStorage.getItem('token');
+api.get('/your-protected-route', {
+  headers: { 'Authorization': `Bearer ${token}` }
+})
+.then(response => {
+  console.log('Protected data:', response.data);
+})
+.catch(error => {
+  console.error('Error fetching data:', error);
+});
