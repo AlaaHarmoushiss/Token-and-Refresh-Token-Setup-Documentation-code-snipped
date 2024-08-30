@@ -1,0 +1,2 @@
+localStorage.setItem('token', token);  // Access Token
+localStorage.setItem('refreshToken', refreshToken);  // Refresh Token
