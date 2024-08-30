@@ -1,0 +1,16 @@
+const refreshToken = (req, res) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(401).json({ error: 'Refresh token is required' });
+  }
+
+  jwt.verify(refreshToken, REFRESH_SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: 'Invalid refresh token' });
+    }
+
+    const newToken = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+    res.status(200).json({ success: true, token: newToken });
+  });
+};
