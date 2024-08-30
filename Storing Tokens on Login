@@ -1,0 +1,9 @@
+axios.post('http://yourserver.com/auth/login', { username, password })
+  .then(response => {
+    localStorage.setItem('token', response.data.token);
+    localStorage.setItem('refreshToken', response.data.refreshToken);
+    // Redirect to the dashboard or homepage
+  })
+  .catch(error => {
+    console.error('Login failed:', error);
+  });
